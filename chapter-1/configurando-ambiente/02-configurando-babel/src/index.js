@@ -4,5 +4,5 @@ const full_name={
 }
 
 if(full_name?.last==='Teixeira'){
-    console.log('true');
+    console.log('true aolspa');
 }
