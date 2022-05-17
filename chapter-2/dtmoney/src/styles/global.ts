@@ -10,6 +10,7 @@ export const GloabalStyle = createGlobalStyle`
         --green:#33CC95;
         --blue:#5429CC;
         --blue_light:#6933FF;
+        --text_body:#969CB3;
     }
 
     *{
