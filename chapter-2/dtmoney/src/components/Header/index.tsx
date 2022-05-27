@@ -1,12 +1,25 @@
-import { Container, Content} from "./style";
+import { useState } from "react";
 import LogoImg from '../../assets/logo.svg';
+import { Container, Content } from "./style";
 
-export function Header (){
+interface HeaderProps{
+   openModal:()=>void;
+}
+
+export function Header ({openModal}:HeaderProps){
+   
+
     return(
         <Container>
             <Content>
                 <img src={LogoImg} alt="" />
-                <button type="button">Nova transação</button>
+                <button 
+                    type="button"
+                    onClick={openModal}
+                >
+                    Nova transação
+                </button>
+                
             </Content>
         </Container>
     )
