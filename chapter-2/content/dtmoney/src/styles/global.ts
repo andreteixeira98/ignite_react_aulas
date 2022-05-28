@@ -9,8 +9,8 @@ export const GloabalStyle = createGlobalStyle`
         --red:#E62E4D;
         --green:#33CC95;
         --blue:#5429CC;
-        --blue_light:#6933FF;
-        --text_body:#969CB3;
+        --blue-light:#6933FF;
+        --text-body:#969CB3;
     }
 
     *{
@@ -50,6 +50,59 @@ export const GloabalStyle = createGlobalStyle`
         opacity: 0.6;
         cursor: not-allowed;
         
+    }
+
+    .react-modal-overlay{
+
+        background: rgba(0,0,0, 0.5);
+        position: fixed;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .react-modal-content{
+
+        width: 100%;
+        max-width: 576px;
+        height: 588px;
+
+        position:relative;
+        background: var(--background);
+
+        padding: 3rem;
+        border-radius: 0.24rem;
+
+
+
+
+    }
+
+    .close-modal-button{
+        height: 1rem;
+        width: 1rem;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: transparent;
+        border:0;
+        display: flex;
+        transition:filter 0.2s;
+
+        &:hover{
+            filter: brightness(0.8);
+        }
+
+        img{
+           flex: 1;
+        }
+
     }
 
 `;
