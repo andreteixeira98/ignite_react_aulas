@@ -40,7 +40,8 @@ export const Form = styled.form`
             color:var(--text);
         }
 
-        & + input{
+
+        & + input{ // sempre tem um input antes
             margin-top: 0.1rem;
         }
     }
