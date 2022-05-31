@@ -2,8 +2,13 @@ import { Container } from "./style";
 import entradasImg from  '../../assets/income.svg';
 import saidasImg from '../../assets/outcome.svg';
 import totalImg from '../../assets/total.svg';
+import { useContext } from "react";
+import { TransactionContext } from "../../context/ TransactionContext";
+
 
 export function Summary(){
+    const data = useContext(TransactionContext);
+    console.log('data in sumary:',data);
     return(
         <Container>
             <div>

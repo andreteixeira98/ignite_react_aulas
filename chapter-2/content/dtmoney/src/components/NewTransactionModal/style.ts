@@ -64,9 +64,6 @@ export const Form = styled.form`
         }
     }
 
-
-
-
     
 `;
 
@@ -83,8 +80,8 @@ export const TransactionTypeContainer = styled.div`
 `;
 
 interface TransactionButtonProps{
-    colorWhenActive: 'green' | 'red';
-    isActive:boolean;
+	colorWhenActive: 'green' | 'red';
+	isActive:boolean;
 }
 
  const transactionButtonColors={
