@@ -29,7 +29,7 @@ createServer({
         {
           id:1,
           title:'web designer',
-          price:3000,
+          amount:3000,
           type:'withdraw',
           category:'business',
           created_At: new Date('2021-12-20 16:30:00:000')
@@ -37,7 +37,7 @@ createServer({
         {
           id:2,
           title:'web developer',
-          price:4000,
+          amount:4000,
           type:'deposit',
           category:'job',
           created_At: new Date('2022-03-13 10:30:00:000')

@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { TransactionContext } from "../../context/ TransactionContext";
+import { useTransactionContext } from "../../hooks/ useTransactionContext";
 import { Container } from "./style";
 
 
@@ -8,7 +7,8 @@ export function TransactionsTable(){
    
 
     
-    const {transactions} = useContext(TransactionContext);
+    const {transactions} = useTransactionContext();
+    
    
 
     return(
@@ -17,7 +17,7 @@ export function TransactionsTable(){
                 <thead>
                     <tr>
                         <th>Titulo</th>
-                        <th>Preço</th>
+                        <th>Valor</th>
                         <th>Categoria</th>
                         <th>Data</th>
                     </tr>
@@ -33,7 +33,7 @@ export function TransactionsTable(){
                                         style:'currency',
                                         currency:'BRL'
                                     })
-                                    .format(transaction.price)
+                                    .format(transaction.amount)
                                 }
                             </td>
                             <td>{transaction.category}</td>

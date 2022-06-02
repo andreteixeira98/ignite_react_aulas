@@ -1,9 +1,9 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import Modal from 'react-modal';
 import imgClose from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
-import { TransactionContext } from "../../context/ TransactionContext";
+import { useTransactionContext } from "../../hooks/ useTransactionContext";
 import { Container, Form, TransactionButton, TransactionTypeContainer } from "./style";
 
 Modal.setAppElement('#root');
@@ -15,11 +15,11 @@ interface newTransactionModalProps{
 export function NewTransactionModal({isOpen, closeModal}:newTransactionModalProps){
 
     const [title, setTitle] = useState('');
-    const [price, setPrice] = useState(0);
+    const [amount, setAmount] = useState(0);
     const [transactionType, setTransactionType] = useState('deposit');
     const [category, setCategory] = useState('');
 
-    const {createTransaction} = useContext(TransactionContext);
+    const {createTransaction} = useTransactionContext();
     
 
 
@@ -28,7 +28,7 @@ export function NewTransactionModal({isOpen, closeModal}:newTransactionModalProp
        
       const statusCode = await createTransaction({
            title,
-           price,
+           amount,
            type:transactionType,
            category
        });
@@ -39,7 +39,7 @@ export function NewTransactionModal({isOpen, closeModal}:newTransactionModalProp
                 closeModal();
            },500)
            setTitle('');
-           setPrice(0);
+           setAmount(0);
            setTransactionType('deposit');
            setCategory('');
           
@@ -73,9 +73,9 @@ export function NewTransactionModal({isOpen, closeModal}:newTransactionModalProp
 
                     <input 
                         type="text" 
-                        placeholder="Preço"
-                        value={price}
-                        onChange={(event)=> setPrice(Number(event.target.value))}
+                        placeholder="Amount"
+                        value={amount}
+                        onChange={(event)=> setAmount(Number(event.target.value))}
                     />
 
                     <TransactionTypeContainer>

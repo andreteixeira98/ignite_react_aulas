@@ -1,10 +1,10 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 
 interface TransactionsProps{
     id:number,
     title:string,
-    price:number,
+    amount:number,
     type:string,
     category:string,
     created_At:string
@@ -13,7 +13,7 @@ interface TransactionsProps{
 
 //type TransactionInput = Omit<TransactionsProps, 'id' | 'created_At'>;
 
-type TransactionInput = Pick<TransactionsProps, 'title' | 'price' | 'type' |   'category'>;
+type TransactionInput = Pick<TransactionsProps, 'title' | 'amount' | 'type' |   'category'>;
 
 
 interface TransactionsContextProvideProps{
@@ -24,7 +24,7 @@ interface TransactionContextData{
     transactions:TransactionsProps[];
     createTransaction:(transaction:TransactionInput)=> Promise<number>;
 }
-export const TransactionContext = createContext<TransactionContextData>(
+const TransactionContext = createContext<TransactionContextData>(
     {} as TransactionContextData);
 
 
@@ -67,4 +67,10 @@ export const TransactionContext = createContext<TransactionContextData>(
             {children}
         </TransactionContext.Provider>
     )
+ }
+
+ export function useTransactionContext(){
+     const context = useContext(TransactionContext);
+
+     return context;
  }

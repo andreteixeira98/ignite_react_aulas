@@ -26,11 +26,33 @@ export const Container = styled.div`
             font-weight: 500;
         }
 
-        &.hight-light-background{
-            background-color: var(--green);
+        &.totalGreen{
+            background: var(--green);
+            color:#fff;
+        }
+
+        &.totalRed{
+            background: var(--red);
             color: #fff;
         }
 
     }
     
 `;
+
+/**
+ * interface DivTotalProps{
+    backgroundColorTotal: 'green' | 'red';
+
+}
+
+const divTotalColor = {
+    green:'#33CC95',
+    red:'#E62E4D'
+}
+export const DivTotal = styled.div<DivTotalProps>`
+    background: ${(props) => divTotalColor[props.backgroundColorTotal]};
+    color: #fff;
+
+`;
+ */

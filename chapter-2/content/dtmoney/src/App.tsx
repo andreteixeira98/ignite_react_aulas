@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
-import { TransactionsContextProvider } from './context/ TransactionContext';
+import { TransactionsContextProvider } from './hooks/ useTransactionContext';
 import { GloabalStyle } from './styles/global';
 
 export function App() {
