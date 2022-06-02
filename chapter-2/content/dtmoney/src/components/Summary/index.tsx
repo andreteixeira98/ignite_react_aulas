@@ -8,7 +8,6 @@ import { TransactionContext } from "../../context/ TransactionContext";
 
 export function Summary(){
     const data = useContext(TransactionContext);
-    console.log('data in sumary:',data);
     return(
         <Container>
             <div>

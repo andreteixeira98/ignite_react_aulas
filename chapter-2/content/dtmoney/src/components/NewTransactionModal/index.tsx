@@ -23,15 +23,27 @@ export function NewTransactionModal({isOpen, closeModal}:newTransactionModalProp
     
 
 
-    function handleSubmitTransaction(event:FormEvent){
+    async function handleSubmitTransaction(event:FormEvent){
         event.preventDefault();
        
-       createTransaction({
+      const statusCode = await createTransaction({
            title,
            price,
            type:transactionType,
            category
        });
+
+       if(statusCode === 201){
+           
+           setTimeout(()=>{
+                closeModal();
+           },500)
+           setTitle('');
+           setPrice(0);
+           setTransactionType('deposit');
+           setCategory('');
+          
+       }
     }
     return(
         <Container>

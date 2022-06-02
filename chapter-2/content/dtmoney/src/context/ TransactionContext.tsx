@@ -22,7 +22,7 @@ interface TransactionsContextProvideProps{
 
 interface TransactionContextData{
     transactions:TransactionsProps[];
-    createTransaction:(transaction:TransactionInput)=> void;
+    createTransaction:(transaction:TransactionInput)=> Promise<number>;
 }
 export const TransactionContext = createContext<TransactionContextData>(
     {} as TransactionContextData);
@@ -40,8 +40,19 @@ export const TransactionContext = createContext<TransactionContextData>(
        
     },[]);
 
-     function createTransaction(transaction:TransactionInput){
-       api.post('/transaction',transaction);
+     async function createTransaction(transactionInput:TransactionInput){
+       const response = await api.post('/transaction',{
+           ...transactionInput,
+           created_At: new Date()
+        });
+       const {status, data} = response;
+       const {transaction} = data;
+       
+
+       if(status === 201){
+           setTransactions([...transactions,transaction])
+       }
+       return status;
       
     }
 
