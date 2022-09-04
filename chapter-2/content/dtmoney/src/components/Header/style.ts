@@ -1,36 +1,37 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.header`
-   
-    background-color: var(--blue);
-
+    background: var(--blue);
 `;
 
 export const Content = styled.div`
     max-width: 1120px;
-   
     margin: 0 auto;
-    padding: 2rem 1rem 12rem;
+
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: space-between;
+
+    padding: 1rem 2rem 10rem;
+
+
 
     button{
         font-size: 1rem;
-        color: #fff;
-        height: 48px;
-        background-color: var(--blue-light);
-        outline: none;
-        border: solid 1px var(--background);
-        padding: 0 2rem;
-        border-radius: 0.25rem;
+        background: var(--blue-light);
+        width: 12rem;
         height: 3rem;
 
+        border: 0;
+        border-radius: 0.25rem;
+
+        color: rgba(255,255,255,1);
+
+        font-weight: 500;
         transition: filter 0.2s;
 
         &:hover{
-            filter:brightness(0.9)
+            filter: brightness(0.9);
         }
     }
-
 `;
