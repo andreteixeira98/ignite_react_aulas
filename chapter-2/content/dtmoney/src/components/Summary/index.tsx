@@ -22,7 +22,7 @@ export function Summary(){
                          <img src={withdraw} alt="Saidas" />
                     </header>
                    <strong>R$ -500</strong>
-                </div>
+                </div>  
 
                  <div className='hight-light-background'>
                     <header>
