@@ -1,6 +1,16 @@
+import { useEffect } from "react";
+import { api } from "../../services/api";
 import { Container } from "./styles";
 
+
 export function TransactionTable(){
+    // const serverPort= process.env.REACT_APP_SERVER_PORT ?? 4000;
+    // const serverBaseURL= process.env.REACT_APP_SERVER_BASE_URL ?? "api";
+    
+    useEffect(()=>{
+        api.get(`/times`)
+        .then(response => console.log(response.data));
+    },[]);
     return(
         <Container>
             <table>

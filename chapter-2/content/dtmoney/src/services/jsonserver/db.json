@@ -1,0 +1,29 @@
+{
+  "times": [
+    {
+      "id": 1,
+      "name": "Flamengo",
+      "titles": 8
+    },
+    {
+      "id": 2,
+      "name": "santos",
+      "titles": 8
+    },
+    {
+      "id": 3,
+      "name": "ceará",
+      "titles": 0
+    },
+    {
+      "id": 4,
+      "name": "Fortaleza",
+      "titles": 1
+    },
+    {
+      "id": 8,
+      "name": "vasco",
+      "titles": -1
+    }
+  ]
+}
