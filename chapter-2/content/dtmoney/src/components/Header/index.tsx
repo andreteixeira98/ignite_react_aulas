@@ -1,7 +1,12 @@
 import { Container, Content } from "./style";
 import logo from '../../assets/logo.svg'
 
-export function Header(){
+
+
+interface HeaderProps{
+  onOpenNewTransactionModal:()=>void;
+}
+export function Header(props:HeaderProps){
   return (
     <Container>
         <Content>
@@ -9,6 +14,7 @@ export function Header(){
 
             <button
                 type="button"
+                onClick={props.onOpenNewTransactionModal}
             >
                 Nova Transação
             </button>

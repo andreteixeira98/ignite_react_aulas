@@ -8,8 +8,11 @@ export function TransactionTable(){
     // const serverBaseURL= process.env.REACT_APP_SERVER_BASE_URL ?? "api";
     
     useEffect(()=>{
-        api.get(`/times`)
-        .then(response => console.log(response.data));
+        // api.post(`/times`,{"name":"crb"})
+        // .then(response => console.log(response.data));
+
+        // api.get('/times')
+        // .then(response=> console.log(response.data));
     },[]);
     return(
         <Container>
