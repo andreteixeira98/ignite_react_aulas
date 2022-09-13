@@ -86,7 +86,7 @@ export const TransactionTypeContainer = styled.div`
 
 interface TransactionTypeButtonProps{
     isActive:boolean;
-    colorWhenActive: "red" | "green";
+    colorWhenIsActive: "red" | "green";
 }
 
 const colors ={
@@ -97,7 +97,7 @@ export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
     
 
     background-color: ${props=>props.isActive ? 
-        transparentize(0.9,colors[props.colorWhenActive])
+        transparentize(0.9,colors[props.colorWhenIsActive])
         : 
         'transparent'};
     height: 4rem;
@@ -125,7 +125,7 @@ export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
     }
     
     &:hover{
-        background-color: ${(props)=> transparentize(0.9, colors[props.colorWhenActive])};
+        background-color: ${(props)=> transparentize(0.9, colors[props.colorWhenIsActive])};
        
     }
     
