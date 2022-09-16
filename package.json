@@ -1,6 +1,6 @@
 {
   
-  "name": "aulas",
+  "name": "aulas",  
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/andreteixeira98/ignite_react_aulas.git",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "husky":{
     "hooks":{
-      "commit-msg":"commitlint"
+      "commit-msg":"commitlint E HUSKY_GIT_PARAMS"
     }
   },
   "devDependencies": {
