@@ -1,0 +1,19 @@
+{
+  
+  "name": "aulas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/andreteixeira98/ignite_react_aulas.git",
+  "author": "andreteixeira98 <andreteixeiracbjr@gmail.com>",
+  "license": "MIT",
+  "husky":{
+    "hooks":{
+      "commit-msg":"commitlint"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "husky": "^8.0.1"
+  }
+}
