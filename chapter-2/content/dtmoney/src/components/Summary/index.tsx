@@ -2,10 +2,15 @@ import income from '../../assets/entradas.svg';
 import withdraw from '../../assets/saidas.svg';
 import total from '../../assets/total.svg';
 import { Container } from "./styles";
+import {useContext} from "react";
+import { TransactionsContext } from '../../context/transactionsContext';
 
 
 
 export function Summary(){
+    const data = useContext(TransactionsContext);
+
+    console.log(data);
     return(
         <Container>
                 <div>

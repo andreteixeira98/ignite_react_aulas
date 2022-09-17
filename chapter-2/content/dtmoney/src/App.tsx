@@ -5,6 +5,8 @@ import { Header } from "./components/Header";
 import { NewTransactionModal } from './components/NewTransactionModal';
 import { GlobalStyle } from "./styles/global";
 
+import { TransactionsProvider } from './context/transactionsContext';
+
 createServer({
 
   models:{
@@ -13,6 +15,13 @@ createServer({
   seeds(server){
     server.db.loadData({
       transactions:[
+        {
+          title:'compras da semana',
+          price:500,
+          type:'withdraw',
+          category:'compras',
+          createdAt: new Date()
+        },
         {
           title:'compras da semana',
           price:500,
@@ -28,7 +37,7 @@ createServer({
 
     this.namespace = process.env.REACT_APP_SERVER_BASE_URL ?? 'api';
     
-    this.get('/transactions',()=> {
+    this.get('/transactions',()=> { 
       return this.schema.all("transaction");
     } )
 
@@ -56,14 +65,14 @@ export function App() {
     setNewTransactionModalOpen(true);
   }
     return (
-      <> 
+      <TransactionsProvider> 
         <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/> 
-        < Dashboard />
+        <Dashboard />
         <NewTransactionModal 
           isOpen={isNewTransactionModalOpen}
           onRequestCloseModal={handleCloseNewTransactionModal}
         />
         <GlobalStyle/> 
-      </>
+      </TransactionsProvider>
     );
 }

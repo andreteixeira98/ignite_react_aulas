@@ -1,10 +1,10 @@
+import { FormEvent, useContext, useState } from "react";
 import ReactModal from "react-modal";
-import { Content, TransactionTypeButton, TransactionTypeContainer } from "./styles";
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/entradas.svg';
 import withdrawImg from '../../assets/saidas.svg';
-import { FormEvent, useState } from "react";
-import { api } from "../../services/api";
+import { TransactionsContext } from "../../context/transactionsContext";
+import { Content, TransactionTypeButton, TransactionTypeContainer } from "./styles";
 
 ReactModal.setAppElement("#root");
 interface NewTransactionModalProps{
@@ -13,22 +13,30 @@ interface NewTransactionModalProps{
 }
 
 export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransactionModalProps){
-
+    const {createTransaction} = useContext(TransactionsContext);
     const [transactionType, setTransactionType] = useState('deposit');
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
     const [category, setCategory] = useState('');
 
 
-    function handleOnSubmitForm(event:FormEvent){
+    async function handleOnSubmitForm(event:FormEvent){
         event.preventDefault();
-        api.post('/transactions',{
-            title,
-            price,
-            type:transactionType,
-            category,
-            createdAt: new Date()
-        })
+      await createTransaction({
+        title,
+        price,
+        type:transactionType,
+        category
+       });
+
+        setTimeout(()=>{
+            onRequestCloseModal();
+        },200);
+
+        setTitle('');
+        setPrice(0);
+        setCategory('');
+        setTransactionType('deposit');
     }
 
     return(

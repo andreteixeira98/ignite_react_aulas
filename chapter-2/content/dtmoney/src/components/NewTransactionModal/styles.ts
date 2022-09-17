@@ -22,6 +22,7 @@ export const Content = styled.form`
 
         border:0;
         background: transparent;
+       
 
         transition: filter 0.2s;
 
