@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 import { NewTransactionModal } from './components/NewTransactionModal';
 import { GlobalStyle } from "./styles/global";
 
-import { TransactionsProvider } from './context/transactionsContext';
+import { TransactionsProvider } from './hooks/useTransactions';
 
 createServer({
 
@@ -16,10 +16,10 @@ createServer({
     server.db.loadData({
       transactions:[
         {
-          title:'compras da semana',
-          price:500,
-          type:'withdraw',
-          category:'compras',
+          title:'venda veiculo',
+          price:7000,
+          type:'deposit',
+          category:'vendas',
           createdAt: new Date()
         },
         {
@@ -32,7 +32,7 @@ createServer({
       ]
     })
   },
-  routes() {
+  routes() {  
   
 
     this.namespace = process.env.REACT_APP_SERVER_BASE_URL ?? 'api';
