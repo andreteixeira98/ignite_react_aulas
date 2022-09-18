@@ -38,25 +38,7 @@ export const Content = styled.form`
 
     }
 
-    input{
-        background-color: #E7E9EE;
-        color: var(--text-body);
-        width: 30rem;
-        height: 4rem;
-        padding: 1rem;
-        border: 1px solid #D7D7D7;
-        border-radius: 0.25rem;
-        font-weight: 400;
-        letter-spacing: 0.1rem;
-        line-height: 0.25rem;
-
-
-        &::placeholder{
-            color:var(--text-body);
-        }
-
-
-    }
+   
 
     button[type=submit]{
         background-color: var(--green);
@@ -73,6 +55,36 @@ export const Content = styled.form`
             filter:brightness(0.9);
         }
     }
+
+`;
+
+interface InputProps{
+    isValid:boolean;
+}
+export const Input = styled.input<InputProps>`
+
+    
+        background-color: #E7E9EE;
+        color: var(--text-body);
+        width: 30rem;
+        height: 4rem;
+        padding: 1rem;
+        border: 1px solid #D7D7D7;
+        border-radius: 0.25rem;
+        font-weight: 400;
+        letter-spacing: 0.1rem;
+        line-height: 0.25rem;
+        outline-color: ${(props)=>props.isValid? '#33CC95' : '#E62E4D'};
+
+
+        &::placeholder{
+            color:var(--text-body);
+        }
+
+
+    
+
+
 
 `;
 
