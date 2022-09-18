@@ -27,8 +27,17 @@ export const Container = styled.div`
             line-height: 3rem;
         }
     }
-    & .hight-light-background{
-        background-color: var(--green);
+    & .total-positive-balance{
+        background-color: var(--red);
+        color:var(--shape);
+        
+        strong{
+            color: var(--shape);
+        }
+    }
+
+    & .total-negative-balance{
+        background-color: var(--red);
         color:var(--shape);
         
         strong{
