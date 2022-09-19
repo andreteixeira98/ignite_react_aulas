@@ -12,6 +12,7 @@ ReactModal.setAppElement("#root");
 interface NewTransactionModalProps{
     isOpen:boolean;
     onRequestCloseModal:()=>void;
+    
 }
 
 export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransactionModalProps){
@@ -30,47 +31,44 @@ export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransaction
     const [isValidCategory, setIsValidCategory] = useState(false);
     
    
-
-    function onChangeTitle(titleInput:string) {
-        const titleSchema = yup.string().required();
-        titleSchema.isValid(titleInput).then((valid)=>{
-            setIsValidTitle(valid);
+    const onChangeInput = {
+        onTitle:(titleInput:string)=>{
+            const titleSchema= yup.string().required();
+            
             setTitle(titleInput);
-        }).catch((notValid=>{
-            setIsValidTitle(false);
-        }));
-    }
+            titleSchema.isValid(titleInput).then(valid => {
+               
+                setIsValidTitle(valid);
+            });
+        },
 
-    function onChangePrice(priceInput:number) {
-        const priceSchema = yup.number().positive().required();
-        priceSchema.isValid(priceInput).then((valid)=>{
-            setIsValidPrice(valid);
-            setPrice(Number(priceInput));
-        }).catch((notValid=>{
-            setIsValidPrice(false);
-        }));
-    }
+        onPrice:(priceInput:number)=>{
+            const priceSchema = yup.number().positive().moreThan(0).required();
 
-    function onChangeCategory(categoryInput:string) {
-        const categorySchema = yup.string().required();
-        categorySchema.isValid(categoryInput).then((valid)=>{
-            setIsValidCategory(valid);
+            setPrice(priceInput);
+            priceSchema.isValid(priceInput).then(valid=>{
+                setIsValidPrice(valid);
+            })
+        },
+        onCategory:(categoryInput:string)=>{
+            const categorySchema = yup.string().required();
+
             setCategory(categoryInput);
-        }).catch((notValid=>{
-            setIsValidCategory(false);
-        }));
+
+            categorySchema.isValid(categoryInput).then(valid=>{
+                setIsValidCategory(valid);
+            })
+        }
     }
+        
+        
+    
+
+
 
     async function handleOnSubmitForm(event:FormEvent){
         event.preventDefault();
         
-       const transactionSchema= yup.object({
-        title:yup.string().required(),
-        price:yup.number().positive().required().min(1),
-        type:yup.string().required(),
-        category:yup.string().required()
-       });
-
         const transaction = {
             title,
             price,
@@ -79,7 +77,16 @@ export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransaction
         }
 
         try{
-             await createTransaction(await transactionSchema.validate(transaction));
+            if(isValidTitle && isValidPrice && isValidCategory){
+                await createTransaction(transaction);
+                setTimeout(()=>{
+                   
+                    onRequestCloseModal();
+                },200);
+            }else{
+                alert('Dados Inválidos');
+            }
+             
         }catch(err){
             // alert('Campos Inválidos!');
 
@@ -95,9 +102,7 @@ export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransaction
 
 
       
-        setTimeout(()=>{
-            onRequestCloseModal();
-        },200);
+        
 
         
     }
@@ -122,8 +127,8 @@ export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransaction
                 type="text"  
                 placeholder="Title"
                 value={title}
-               onChange={e=> onChangeTitle(e.target.value)}
-               required
+               onChange={e=> onChangeInput['onTitle'](e.target.value)}
+               
                
             />
             {/**onChange={event=> setPrice(Number(event.target.value))} */}
@@ -132,8 +137,8 @@ export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransaction
                 type="number" 
                 placeholder="Price"
                 value={price}
-               onChange={e=> onChangePrice(Number(e.target.value))}
-               required
+               onChange={e=> onChangeInput['onPrice'](Number(e.target.value))}
+               
             />
             <TransactionTypeContainer>
                 <TransactionTypeButton
@@ -162,8 +167,9 @@ export function NewTransactionModal({isOpen, onRequestCloseModal}:NewTransaction
                 type="text" 
                 placeholder="category"
                 value={category}
-                onChange={e=> onChangeCategory(e.target.value)}
+                onChange={e=> onChangeInput['onCategory'](e.target.value)}
                 required
+               
             />
             <button type="submit">Cadastrar</button>
          </Content>
